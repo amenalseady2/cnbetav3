@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-CN">
+<meta name="Author" content="Dengwei">
+<title>title</title>
+</head>
+<body>
+<table style="width: 300px;height:300px;border:1px solid Red">
+<{section name=list2 loop=$list2}>
+  <tr>
+  <{section name=list1 loop=$list2[list2]}>
+    <td><{$list2[list2][list1].title}></td>
+  <{/section}>
+  </tr>
+<{/section}>
+</table>
+</body>
+</html>

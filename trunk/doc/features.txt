@@ -1,0 +1,8 @@
+功能特性：
+
+反向代理(Reverse Proxy)
+负载均衡(Load Balance)
+动态缓存(Dynamic Caching)
+离缓缓存(Offline Caching)
+无限级标签(Unlimited TAGS)
+缓存替换算法(Cache Switching)

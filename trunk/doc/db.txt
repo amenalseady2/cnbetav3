@@ -1,0 +1,48 @@
+users
+	sid
+	username
+	realname
+	nickname
+	point
+	gender
+	email
+	photo
+	date
+
+news
+	sid
+	title
+	content
+	checker
+	author
+	release_date
+	check_date
+
+news_queue
+	sid
+	title
+	content
+	ori_url
+	author
+	date
+
+comments
+	sid
+	content
+	author
+	date
+	ip
+
+permit
+	sid
+	action
+	status
+
+role
+	sid
+	permit_sid
+
+char_role
+	sid
+	role_sid
+	user_sid
