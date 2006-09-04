@@ -34,6 +34,7 @@ $tpl->right_delimiter	= '} -->';
 $tpl->caching		= true;
 $tpl->cache_lifetime	= 10;
 $tpl->cache_dir		= __SITE_ROOT . "cache/";
+
 // ·ÀÖ¹ÖØ¸´
 $tpl->cache_dir		.= strtoupper(substr(md5($_SERVER['URL']),0,2));
 
