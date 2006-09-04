@@ -2,23 +2,32 @@
 /*
  * $Id: config.php 13 2006-07-07 02:57:16Z dengwei $
  *
- * global config file
+ * 全局配置文件
  */
 
 require_once "smarty/Smarty.class.php";
-require_once "adodb/adodb.inc.php";
-
-/*
+require_once "includes/adodb.inc.php";
+/**
+ * 配置信息
+ */
+$smarty_cache_md5_length	=	2;		// smarty 对象 cache 目录子目录名长度
+$smarty_lifetime		=	10;		// smarty 页面生存时间
+$smarty_caching			=	true;		// 是否缓存页面
+$smarty_left_delimiter		=	'<!-- {';	// 左分隔符
+$smarty_right_delimiter		=	'} -->';	// 右分隔符
+/**
  * global variables
  */
+// 设置项目目录
+$project_path = "";
+$project_path_array = explode("\\",__FILE__);
+for($counter = 1; $counter < count($project_path_array)-1 ; $counter++ )
+	$project_path .= $project_path_array[$counter] . "/";
+unset($project_path_array);
+@define('__SITE_ROOT' , '/' . $project_path );
 
-$NowPathArray = explode( "v3" , str_replace( "\\" , "/" , dirname(__FILE__) ) );
-
-@define("root_path" , $NowPathArray[0] );
-@define('__SITE_ROOT' , root_path . "v3/" );
-
-/*
- * instance of Smarty
+/**
+ * Smarty 对象实例
  */
 
 $tpl = new Smarty();
@@ -28,14 +37,12 @@ $tpl->compile_dir	= __SITE_ROOT . "templates_c/";
 $tpl->config_dir	= __SITE_ROOT . "configs/"; 
 $tpl->cache_dir		= __SITE_ROOT . "cache/";
 
-$tpl->left_delimiter	= '<!-- {';
-$tpl->right_delimiter	= '} -->'; 
+$tpl->left_delimiter	= $smarty_left_delimiter;
+$tpl->right_delimiter	= $smarty_right_delimiter;
 
-$tpl->caching		= true;
-$tpl->cache_lifetime	= 10;
+$tpl->caching		= $smarty_caching;
+$tpl->cache_lifetime	= $smarty_lifetime;
 $tpl->cache_dir		= __SITE_ROOT . "cache/";
-
 // 防止重复
-$tpl->cache_dir		.= strtoupper(substr(md5($_SERVER['URL']),0,2));
-
+$tpl->cache_dir		.= strtoupper(substr(md5($_SERVER['URL']),0,$smarty_cache_md5_length));
 ?>
