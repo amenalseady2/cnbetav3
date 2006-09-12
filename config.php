@@ -4,7 +4,6 @@
  *
  * 全局配置文件
  */
-
 require_once "smarty/Smarty.class.php";
 require_once "includes/adodb.inc.php";
 /**
